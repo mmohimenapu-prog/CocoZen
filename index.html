@@ -3,106 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#174b35">
-<title>CocoZen | Fresh Coconut</title>
+<title>CocoZen - Fresh Coconut</title>
 <style>
-:root{--green:#174b35;--green2:#236447;--mint:#eaf5ec;--cream:#fffdf6;--gold:#e9b949;--ink:#193329}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Bengali",Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6}
-header{background:var(--green);color:white;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:5}
-.logo{font-weight:900;font-size:1.5rem;letter-spacing:.4px}.logo span{color:#bce2bd}nav a{color:white;text-decoration:none;margin-left:20px;font-size:.95rem}
-.hero{background:linear-gradient(120deg,#eaf5ec 0%,#fffdf6 70%);padding:58px 5% 50px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
-.eyebrow{color:var(--green2);font-weight:800;letter-spacing:1px}.hero h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.15;margin:12px 0;color:var(--green)}.hero p{font-size:1.1rem;max-width:560px}
-.hero-art{min-height:300px;border-radius:28px;background:radial-gradient(circle at 50% 45%,#f7e7b5 0 18%,transparent 19%),linear-gradient(145deg,#d9efdb,#b8d8bd);display:flex;align-items:center;justify-content:center;font-size:clamp(6rem,16vw,11rem);box-shadow:0 18px 45px #174b3520}
-.btn{display:inline-block;border:0;border-radius:999px;background:var(--green);color:#fff;padding:13px 23px;font-weight:800;text-decoration:none;cursor:pointer}.btn:hover{background:var(--green2)}
-section{padding:54px 5%}.section-head{text-align:center;max-width:700px;margin:0 auto 28px}.section-head h2{font-size:2rem;color:var(--green);margin:0 0 8px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature,.price-card,.order-card{background:white;border:1px solid #e5eee5;border-radius:20px;padding:22px;box-shadow:0 8px 24px #174b3509}.feature{text-align:center}.feature .emoji{font-size:2rem}
-.prices{background:var(--mint)}.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:950px;margin:auto}.price-card{text-align:center}.price-card strong{display:block;font-size:2rem;color:var(--green)}.price-card small{color:#5b6c61}
-.order-wrap{max-width:760px;margin:auto}.order-card{padding:28px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-weight:700;font-size:.95rem;margin-bottom:5px}input,select,textarea{width:100%;padding:12px;border:1px solid #ccd9ce;border-radius:11px;font:inherit;background:#fff}textarea{min-height:90px;resize:vertical}.full{grid-column:1/-1}.hint{font-size:.88rem;color:#607166}.total{background:var(--mint);padding:14px;border-radius:12px;font-weight:800;margin:14px 0;color:var(--green);display:flex;justify-content:space-between}
-footer{background:var(--green);color:#eaf5ec;text-align:center;padding:28px 5%}footer a{color:#fff}
-@media(max-width:720px){header{padding:13px 5%}nav a{margin-left:10px;font-size:.85rem}.hero{grid-template-columns:1fr;padding-top:38px}.hero-art{min-height:210px}.features,.price-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}section{padding:42px 5%}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f3f8ef;color:#18351e}
+header{background:#14532d;color:white;padding:28px 16px;text-align:center}
+header h1{font-size:34px;margin:0 0 8px}header p{margin:0}
+main{max-width:720px;margin:22px auto;padding:0 14px}
+.card{background:white;border-radius:16px;padding:22px;margin:16px 0;box-shadow:0 4px 18px #173b1712}
+h2{color:#14532d;margin-top:0}.prices{display:flex;gap:10px;flex-wrap:wrap}
+.price{flex:1;min-width:110px;background:#edf7e9;border-radius:12px;padding:15px;text-align:center;font-weight:bold}
+label{display:block;font-weight:bold;margin:14px 0 6px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #cbd8c8;border-radius:9px;font-size:16px}
+button,.wa{display:block;width:100%;border:0;border-radius:10px;padding:14px;background:#16803d;color:white;font-size:17px;font-weight:bold;text-align:center;text-decoration:none;margin-top:14px;cursor:pointer}
+.wa.alt{background:#075e54}.hint{font-size:14px;color:#526452}
+#result{display:none}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">🥥 Coco<span>Zen</span></div>
-  <nav><a href="#prices">দাম</a><a href="#order">অর্ডার</a></nav>
-</header>
+<header><h1>🥥 CocoZen</h1><p>পরিষ্কার ও প্যাকেটজাত টাটকা ডাব</p></header>
 <main>
-  <section class="hero">
-    <div>
-      <div class="eyebrow">FRESH • CLEAN • READY TO ENJOY</div>
-      <h1>প্রতিদিনের সতেজ ডাব, সহজ অর্ডারে</h1>
-      <p>পরিষ্কারভাবে প্রস্তুত ও আলাদাভাবে প্যাক করা তাজা ডাব। রেস্টুরেন্ট, সুপারশপ ও ব্যবসার জন্য পাইকারি অর্ডার নেওয়া হয়।</p>
-      <a class="btn" href="#order">এখনই অর্ডার করুন</a>
-    </div>
-    <div class="hero-art" aria-label="ডাবের ইলাস্ট্রেশন">🥥</div>
-  </section>
-  <section>
-    <div class="section-head"><h2>কেন CocoZen?</h2><p>আপনার ব্যবসার জন্য সহজ ও নির্ভরযোগ্য ডাব সরবরাহ</p></div>
-    <div class="features">
-      <div class="feature"><div class="emoji">🌿</div><h3>তাজা ডাব</h3><p>সতেজ ডাব বাছাই করে প্রস্তুত করা হয়।</p></div>
-      <div class="feature"><div class="emoji">📦</div><h3>আলাদা প্যাকিং</h3><p>প্রতিটি ডাব আলাদাভাবে প্যাক করা হয়।</p></div>
-      <div class="feature"><div class="emoji">🚚</div><h3>ব্যবসায়িক অর্ডার</h3><p>রেস্টুরেন্ট, সুপারশপ ও বড় দোকানের অর্ডার।</p></div>
-    </div>
-  </section>
-  <section class="prices" id="prices">
-    <div class="section-head"><h2>ডাবের দাম</h2><p>ডাবের ধরন ও সাইজ অনুযায়ী দাম নির্বাচন করুন</p></div>
-    <div class="price-grid">
-      <div class="price-card"><small>অপশন ১</small><strong>৳১৫০</strong><span>প্রতি ডাব</span></div>
-      <div class="price-card"><small>অপশন ২</small><strong>৳১৭০</strong><span>প্রতি ডাব</span></div>
-      <div class="price-card"><small>অপশন ৩</small><strong>৳১৯০</strong><span>প্রতি ডাব</span></div>
-    </div>
-  </section>
-  <section id="order">
-    <div class="section-head"><h2>অর্ডার ফর্ম</h2><p>সর্বনিম্ন অর্ডার ৫টি ডাব। ফর্ম পূরণ করে WhatsApp-এ অর্ডার পাঠান।</p></div>
-    <div class="order-wrap">
-      <form class="order-card" id="orderForm">
-        <div class="form-grid">
-          <div><label for="name">আপনার নাম *</label><input id="name" required placeholder="নাম লিখুন"></div>
-          <div><label for="phone">মোবাইল নম্বর *</label><input id="phone" required inputmode="tel" placeholder="01XXXXXXXXX"></div>
-          <div><label for="business">প্রতিষ্ঠানের নাম</label><input id="business" placeholder="রেস্টুরেন্ট / দোকানের নাম"></div>
-          <div><label for="price">প্রতি ডাবের দাম *</label><select id="price" required><option value="150">৳১৫০</option><option value="170">৳১৭০</option><option value="190">৳১৯০</option></select></div>
-          <div><label for="qty">ডাবের সংখ্যা *</label><input id="qty" type="number" min="5" step="1" value="5" required></div>
-          <div><label for="date">ডেলিভারির তারিখ</label><input id="date" type="date"></div>
-          <div class="full"><label for="address">ডেলিভারির ঠিকানা *</label><textarea id="address" required placeholder="সম্পূর্ণ ঠিকানা লিখুন"></textarea></div>
-          <div class="full"><label for="notes">অতিরিক্ত তথ্য</label><textarea id="notes" placeholder="বিশেষ কোনো নির্দেশনা থাকলে লিখুন"></textarea></div>
-        </div>
-        <div class="total"><span>মোট মূল্য</span><span id="total">৳৭৫০</span></div>
-        <p class="hint">অর্ডার পাঠালে WhatsApp খুলবে। সেখানে মেসেজটি Send করে অর্ডার নিশ্চিত করুন।</p>
-        <button class="btn" type="submit" style="width:100%">WhatsApp-এ অর্ডার পাঠান</button>
-      </form>
-    </div>
-  </section>
+<section class="card">
+<h2>আমাদের ডাব</h2>
+<p>রেস্টুরেন্ট, সুপারশপ ও ব্যবসার জন্য টাটকা, পরিষ্কার ও যত্নসহকারে প্যাকেটজাত ডাব।</p>
+<div class="prices"><div class="price">৳১৫০</div><div class="price">৳১৭০</div><div class="price">৳১৯০</div></div>
+<p class="hint">ডাবের ধরন ও সাইজ অনুযায়ী দাম নির্ধারিত হবে। সর্বনিম্ন অর্ডার ৫টি।</p>
+</section>
+<section class="card">
+<h2>অর্ডার করুন</h2>
+<form id="orderForm">
+<label>আপনার নাম</label><input id="name" required>
+<label>মোবাইল নম্বর</label><input id="phone" required inputmode="tel">
+<label>প্রতিষ্ঠানের নাম (ঐচ্ছিক)</label><input id="business">
+<label>প্রতি ডাবের দাম</label><select id="price"><option value="150">৳১৫০</option><option value="170">৳১৭০</option><option value="190">৳১৯০</option></select>
+<label>পরিমাণ (কমপক্ষে ৫টি)</label><input id="qty" type="number" min="5" value="5" required>
+<label>ডেলিভারির ঠিকানা</label><textarea id="address" rows="3" required></textarea>
+<label>অতিরিক্ত তথ্য (ঐচ্ছিক)</label><textarea id="note" rows="2"></textarea>
+<button type="submit">অর্ডার তথ্য তৈরি করুন</button>
+</form>
+<div id="result">
+<p id="summary"></p>
+<p><b>যেকোনো একটি WhatsApp নম্বর বেছে নিয়ে অর্ডার পাঠান:</b></p>
+<a class="wa" id="wa1" target="_blank" rel="noopener">WhatsApp: +8801841485254</a>
+<a class="wa alt" id="wa2" target="_blank" rel="noopener">WhatsApp: +8801568680865</a>
+<p class="hint">WhatsApp খুললে মেসেজটি দেখে Send চাপুন।</p>
+</div>
+</section>
 </main>
-<footer><strong>CocoZen</strong><p>Fresh Coconut • Cleanly Packed</p><p>অর্ডার ও যোগাযোগ: WhatsApp <a href="https://wa.me/8801841485254">+8801841485254</a></p></footer>
 <script>
-const orderNumber = "8801841485254";
-const priceEl = document.getElementById("price");
-const qtyEl = document.getElementById("qty");
-const totalEl = document.getElementById("total");
-function updateTotal(){
-  const p = Number(priceEl.value);
-  const q = Math.max(0, Number(qtyEl.value) || 0);
-  totalEl.textContent = "৳" + (p*q).toLocaleString("bn-BD");
-}
-priceEl.addEventListener("change", updateTotal);
-qtyEl.addEventListener("input", updateTotal);
-document.getElementById("orderForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const business = document.getElementById("business").value.trim() || "উল্লেখ নেই";
-  const price = Number(priceEl.value);
-  const qty = Number(qtyEl.value);
-  const date = document.getElementById("date").value || "পরে জানাব";
-  const address = document.getElementById("address").value.trim();
-  const notes = document.getElementById("notes").value.trim() || "নেই";
-  if(qty < 5){ alert("সর্বনিম্ন ৫টি ডাব অর্ডার করতে হবে।"); qtyEl.focus(); return; }
-  const total = price * qty;
-  const message = `🥥 CocoZen নতুন অর্ডার\n\nনাম: ${name}\nমোবাইল: ${phone}\nপ্রতিষ্ঠান: ${business}\nপ্রতি ডাব: ৳${price}\nপরিমাণ: ${qty}টি\nমোট: ৳${total}\nডেলিভারির তারিখ: ${date}\nঠিকানা: ${address}\nঅতিরিক্ত তথ্য: ${notes}`;
-  window.open("https://wa.me/" + orderNumber + "?text=" + encodeURIComponent(message), "_blank");
+document.getElementById('orderForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const name=document.getElementById('name').value.trim();
+ const phone=document.getElementById('phone').value.trim();
+ const business=document.getElementById('business').value.trim();
+ const price=Number(document.getElementById('price').value);
+ const qty=Number(document.getElementById('qty').value);
+ const address=document.getElementById('address').value.trim();
+ const note=document.getElementById('note').value.trim();
+ if(qty<5){alert('সর্বনিম্ন ৫টি ডাব অর্ডার করতে হবে।');return;}
+ const total=price*qty;
+ const msg=`CocoZen অর্ডার\nনাম: ${name}\nমোবাইল: ${phone}\nপ্রতিষ্ঠান: ${business||'উল্লেখ নেই'}\nপ্রতি ডাব: ৳${price}\nপরিমাণ: ${qty}টি\nমোট: ৳${total}\nঠিকানা: ${address}\nঅতিরিক্ত তথ্য: ${note||'নেই'}`;
+ const encoded=encodeURIComponent(msg);
+ document.getElementById('wa1').href='https://wa.me/8801841485254?text='+encoded;
+ document.getElementById('wa2').href='https://wa.me/8801568680865?text='+encoded;
+ document.getElementById('summary').textContent=`মোট অর্ডার মূল্য: ৳${total}`;
+ document.getElementById('result').style.display='block';
+ document.getElementById('result').scrollIntoView({behavior:'smooth'});
 });
-updateTotal();
 </script>
 </body>
 </html>
