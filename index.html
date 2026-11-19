@@ -2,43 +2,139 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CocoZen - Fresh Coconut</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f3f8ef;
-      text-align: center;
-      padding: 25px;
-    }
-    .box {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      max-width: 400px;
-      margin: 30px auto;
-    }
-    h1 { color: #287a3c; }
-    button {
-      background: #287a3c;
-      color: white;
-      border: 0;
-      padding: 14px 25px;
-      border-radius: 10px;
-      font-size: 17px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CocoZen - Fresh Coconut</title>
+<style>
+*{box-sizing:border-box}
+body{
+  font-family:Arial,sans-serif;
+  background:#f3f8ef;
+  margin:0;padding:20px;
+  color:#222;
+}
+.box{
+  background:white;
+  max-width:480px;
+  margin:25px auto;
+  padding:25px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 4px 18px #0001;
+}
+h1{color:#287a3c;font-size:36px}
+h2{font-size:24px}
+p{font-size:17px;line-height:1.7}
+form{text-align:left;margin-top:25px}
+label{display:block;font-weight:bold;margin:15px 0 7px}
+input,select,textarea{
+  width:100%;padding:13px;
+  border:1px solid #ccc;border-radius:9px;
+  font-size:16px;background:white;
+}
+button{
+  width:100%;padding:15px;
+  background:#287a3c;color:white;
+  border:0;border-radius:10px;
+  font-size:18px;margin-top:20px;
+}
+.total{
+  background:#eef8ed;padding:15px;
+  border-radius:10px;margin-top:18px;
+  font-size:20px;font-weight:bold;color:#287a3c;
+  text-align:center;
+}
+.small{font-size:14px;color:#666}
+</style>
 </head>
 <body>
-  <div class="box">
-    <h1>🥥 CocoZen</h1>
-    <h2>Fresh Peeled Coconut</h2>
-    <p>তাজা ও পরিষ্কার প্যাকেটজাত ডাব</p>
-    <p>অর্ডার শুরু মাত্র ৫টি থেকে</p>
-    <button type="button">
-      অর্ডার করুন
-    </button>
-  </div>
+
+<div class="box">
+  <h1>🥥 CocoZen</h1>
+  <h2>Fresh Peeled Coconut</h2>
+  <p>তাজা ও পরিষ্কার প্যাকেটজাত ডাবের</p>
+  <p>অর্ডার শুরু মাত্র ৫টি থেকে</p>
+
+  <button type="button" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">
+    অর্ডার করুন
+  </button>
+
+  <form id="order">
+    <h2 style="text-align:center">অর্ডার ফর্ম</h2>
+
+    <label>আপনার নাম</label>
+    <input id="name" required placeholder="আপনার নাম লিখুন">
+
+    <label>মোবাইল নম্বর</label>
+    <input id="phone" type="tel" required placeholder="আপনার নম্বর লিখুন">
+
+    <label>ডেলিভারির ঠিকানা</label>
+    <textarea id="address" required placeholder="সম্পূর্ণ ঠিকানা লিখুন"></textarea>
+
+    <label>ডাবের সংখ্যা</label>
+    <input id="qty" type="number" min="5" value="5" required>
+
+    <label>প্রতি পিসের দাম</label>
+    <select id="price">
+      <option value="150">১৫০ টাকা</option>
+      <option value="170" selected>১৭০ টাকা</option>
+      <option value="190">১৯০ টাকা</option>
+    </select>
+
+    <label>অতিরিক্ত নির্দেশনা (ঐচ্ছিক)</label>
+    <textarea id="note" placeholder="কোনো বিশেষ নির্দেশনা থাকলে লিখুন"></textarea>
+
+    <div class="total">
+      মোট টাকা: <span id="total">৮৫০</span> টাকা
+    </div>
+
+    <button type="submit">WhatsApp-এ অর্ডার পাঠান</button>
+    <p class="small" style="text-align:center">
+      অর্ডার পাঠাতে WhatsApp খুলবে।
+    </p>
+  </form>
+</div>
+
+<script>
+const qty = document.getElementById('qty');
+const price = document.getElementById('price');
+const total = document.getElementById('total');
+
+function calculate(){
+  let q = Math.max(5, Number(qty.value) || 5);
+  total.textContent = (q * Number(price.value)).toLocaleString('bn-BD');
+}
+qty.addEventListener('input', calculate);
+price.addEventListener('change', calculate);
+
+document.getElementById('order').addEventListener('submit',function(e){
+  e.preventDefault();
+
+  let q = Number(qty.value);
+  if(!Number.isInteger(q) || q < 5){
+    alert('কমপক্ষে ৫টি ডাব অর্ডার করতে হবে।');
+    return;
+  }
+
+  let p = Number(price.value);
+  let message =
+`🥥 CocoZen - নতুন অর্ডার
+
+নাম: ${document.getElementById('name').value}
+মোবাইল: ${document.getElementById('phone').value}
+ঠিকানা: ${document.getElementById('address').value}
+
+ডাবের সংখ্যা: ${q} টি
+প্রতি পিস: ${p} টাকা
+মোট মূল্য: ${q*p} টাকা
+
+বিশেষ নির্দেশনা: ${document.getElementById('note').value || 'নেই'}`;
+
+  let url = 'https://wa.me/8801568680865?text=' + encodeURIComponent(message);
+  window.open(url,'_blank');
+});
+calculate();
+</script>
+
 </body>
 </html>
